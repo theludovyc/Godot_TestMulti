@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://wcmgkfn5y1qe"]
+
+[ext_resource type="Script" path="res://Script/game.gd" id="1_5k5fd"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_5k5fd")
+
+[node name="ConnectGui" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectGui"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="LineEdit_Port" type="LineEdit" parent="ConnectGui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "7890"
+placeholder_text = "7890"
+alignment = 1
+clear_button_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="ConnectGui/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button_CreateServer" type="Button" parent="ConnectGui/VBoxContainer"]
+layout_mode = 2
+text = "Create Server"
+
+[node name="HSeparator2" type="HSeparator" parent="ConnectGui/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit_IP" type="LineEdit" parent="ConnectGui/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "127.0.0.1"
+alignment = 1
+clear_button_enabled = true
+
+[node name="Button_ConnectServer" type="Button" parent="ConnectGui/VBoxContainer"]
+layout_mode = 2
+text = "Connect To Server"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+initial_position = 4
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Players")
+spawn_limit = 4
+
+[node name="Players" type="Node" parent="."]
+
+[node name="PlayerSpawnPos" type="Node" parent="."]
+
+[node name="Pos0" type="Marker2D" parent="PlayerSpawnPos"]
+position = Vector2(128, 128)
+
+[node name="Pos1" type="Marker2D" parent="PlayerSpawnPos"]
+position = Vector2(512, 128)
+
+[node name="Pos2" type="Marker2D" parent="PlayerSpawnPos"]
+position = Vector2(128, 384)
+
+[node name="Pos3" type="Marker2D" parent="PlayerSpawnPos"]
+position = Vector2(512, 384)
+
+[connection signal="button_down" from="ConnectGui/VBoxContainer/Button_CreateServer" to="." method="_on_create_server_button_down"]
+[connection signal="button_down" from="ConnectGui/VBoxContainer/Button_ConnectServer" to="." method="_on_connect_server_button_down"]

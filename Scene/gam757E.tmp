@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://wcmgkfn5y1qe"]
+
+[ext_resource type="Script" path="res://Script/game.gd" id="1_5k5fd"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_5k5fd")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
